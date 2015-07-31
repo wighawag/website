@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+    <head>
+        
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+        <title>NME Stage3D support &middot; wighawag</title>
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' type='text/css'>
+        <link rel="stylesheet" href="http://wighawag.com//libraries/normalize.3.0.1.css" />
+        <link rel="stylesheet" href="http://wighawag.com//css/liquorice.css" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="alternate" href="" type="application/rss+xml" title="wighawag" />
+    </head>
+    <body class="li-body">
+
+<header class="li-page-header">
+    <div class="container">
+        <div class="row">
+            <div class="sixteen columns">
+                <div class="li-brand li-left">
+                <a href="http://wighawag.com/">wighawag</a></div>
+                <div class="li-menu li-right">
+                    <span class="li-menu-icon" onclick="javascript:toggle('menu');">&#9776;</span>
+                    <ul id="menu2" class="li-menu-items">
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen columns">
+                <ul id="menu" class="li-menu-items li-menu-mobile">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="sixteen columns">
+                <article class="li-article">
+                    <header class="li-article-header">
+                        <h1 class="li-article-title">NME Stage3D support</h1>
+                        <span class="li-article-taxonomies">
+                            
+
+                            
+                        </span>
+                        
+                        <time class="li-article-date">Monday, December 31, 2012</time>
+                    </header>
+                    <section>
+                        <p>Hi everybody, long time I did not write a post,</p>
+
+<p>During that time I learnt a wonderful language, <a href="haxe.org">Haxe</a>. I have still lot to learn thought. I don&rsquo;t want to go in the details of why this language (or more accurately its ecosystem) is awesome but as an Actionscript developer for the last 3 years, there is no question to switch back. Haxe offer everything that actionscript has to offer (compiling to swf including air) + many extra feature</p>
+
+<p>The ones I like the most are:</p>
+
+<ul>
+<li>Generics,</li>
+<li>Typed function</li>
+<li>and Macros (which I still have to practice more)</li>
+</ul>
+
+<p>I also like that the compiler is very fast (compared to mxmlc) and it handle Type inference, no need to repeat yourself like in actionscript</p>
+
+<p>But the main advantage is that Haxe can compile to other languages. The current stable ones being swf, javascript, php, c++ and neko (a virtual machine that I did not use much except for writing tools and for using Macros (as they run on this virtual machine).</p>
+
+<p>This not only means that you can get your code working on android, ios, blackberry, linux, mac os x, windows, webos but also that you can share code between client and server</p>
+
+<p>If I find some time I would like to make a Python target myself but as of now this is unlikely to happen</p>
+
+<p>The other great thing about Haxe is its community, they are doing a great job with Haxe itself (haxe 3 in the making) and with great libraries (<a href="http://www.nme.io/">NME</a>, <a href="https://github.com/aduros/flambe">Flambe</a>, <a href="https://github.com/jdonaldson/promhx">Promhx</a>,.,) and quick to reply to questions</p>
+
+<p>Let&rsquo;s get back on the topic. I am writing this post to share the last work I did regarding Haxe and maybe this will contribute to the community..</p>
+
+<p>I am currently working on a game engine which I plan to use for mobile game as well as web based game (thanks to Haxe of course :)</p>
+
+<p>I have a renderer agnostic api and until the last few days I was using:</p>
+
+<ul>
+<li>Flambe 1.2 (only its rendering part) to render stuff on Flash (using stage3d and bitmap renderer as a fallback)</li>
+<li>NME Tilesheet API for cpp target (testing only linux and android)</li>
+</ul>
+
+<p>Then I started to implement a tile map and as soon as I started to add many tiles, my old android phone (an HTC magic upgraded to androdi 2.3) could not display anything,</p>
+
+<p>The reason was not Tilesheet performance (using GPU) per se but the fact that in order to update the position of the tiles while scrolling, the CPU (not the GPU) could not handle the many tile. Of course there were lots of optimization possible as I was using a quite high level API but this problem made me think that it would be nice if I could use the GPU myself directly so that I can save my vertex buffer at the beginning and at each frame I would just need to update the view matrix.
+Actually maybe there was a nice way to achieve the same with tilesheet API ?</p>
+
+<p>Anyway, just in time came NME 3.5.1 with support for OpenGLView</p>
+
+<p>I jumped on it and learn OpenGL on the way to realize that it should not be too difficult to implement the Stage3D API for NME</p>
+
+<p>So here it is <a href="https://github.com/wighawag/NME/tree/stage3d">https://github.com/wighawag/NME/tree/stage3d</a></p>
+
+<p>It is still not fully working as flash Stage3D is. here is a partial list of the issues:</p>
+
+<ul>
+<li>there is no support for multiple textures yet</li>
+<li>(Index/Vertex)Buffer can only be uploaded from ByteArray as of now (it might be straigthforward to make it work with Vector though)</li>
+<li>for Context3D here are the following issues:</li>
+<li>Context3D.setCulling is not tested</li>
+<li>Context3D.setDepthTest not woking  (Currentlty the constants for the Depth test are not set in the opengl API provided in NME)</li>
+<li>Context3D.configureBackBuffer does not take in consideration antiAlias and enableDepthAndStencil arguments</li>
+<li>Context3D.createCubeTexture not implemented</li>
+<li>Context3D.createTexture does not consider Format, optimizeForRenderToTexture and streamingLevels arguments</li>
+<li>Context3D.drawToBitmapData not implemented</li>
+<li>Context3D.setProgramConstantsFromByteArray not implemented</li>
+<li>Context3D.setProgramConstantsFromVector not implemented</li>
+<li>Context3D.setRenderToBackBuffer not implemented</li>
+<li>Context3D.setRenderToTexture not implemented</li>
+<li>Context3D.setScissorRectangle not implemented</li>
+<li>Context3D.setStencilActions not implemented</li>
+<li>Context3D.setStencilReferenceValue not implemented</li>
+<li>probably many thing I forgot</li>
+<li>since the openGL api used in NME does not allow direct call to render, you need to set a render function. This is achieved by passing a function to Contex3D.setRenderMethod (which does not exist in flash). To be as close as possible to flash Stage3D I should probably allow to render in Event.ENTER_FRAME or any timer. But this would require to cache the calls made to context3D and replay them when the openGL API call the render function.</li>
+</ul>
+
+<p>Anyway the main drawback currently is that since Stage3D and opengl use different shader language you still need to code your shader in two languages. Also regarding GLSL, since I wanted to use Stage3D api which does not support arbitrary name for attributes and uniforms, you have to use the same convention as AGAL (vc0, vc1 for vertex uniforms, va0, va1.. for vertex attribute, &hellip;etc&hellip;) as attribute and uniform name in GLSL</p>
+
+<p>The best solution here would be to extend <a href="http://haxe.org/manual/hxsl">HXSL</a> and use it to have only one language for both Stage3D and GLSL but I did not look into that. I know there were some work on a GLSL target for HXSL but I don&rsquo;t know what is the state of this as of now, Any info ?</p>
+
+<p>I will porbably look into it when I ll need more complex shader stuff.</p>
+
+<p>I plan to continue working on this Stage3D port and I would be very glad if it could be included in NME trunk so my work do not get lost as a patch file.  I ll probably do a pull request even if it s still not perfect)</p>
+
+<p>I posted a test here  <a href="https://github.com/wighawag/NMEStage3DTest">https://github.com/wighawag/NMEStage3DTest</a></p>
+
+<iframe width="500" height="500" src="http://www.wighawag.com/blog/content/NMEStage3DTest.html"></iframe>
+
+<p>It should work in Flash without my new version of NME
+And the patch provided <a href="https://raw.github.com/wighawag/NMEStage3DTest/master/stage3d.patch">here</a> should make it work in cpp (tested only on Linux 64 bit by the way)</p>
+
+<p>You ban also clone my NME fork if you prefer and checkout the &ldquo;stage3d&rdquo; branch</p>
+
+<p>Let me know what you think and if some of you already started some similar work, let&rsquo;s cooperate.</p>
+
+<p>All the best for the coming new year!</p>
+
+<p>We survived the end of the world so let&rsquo;s celebrate apropriately :)</p>
+
+                    </section>
+                </article>
+            </div>
+        </div>
+
+        <div class="row li-author">
+    <div class="sixteen columns">
+        Written by <strong>wighawag</strong>
+    </div>
+</div>
+
+
+        <div class="row li-pagination">
+            <div class="eight columns">
+                <div class="li-pagination-previous">
+                    
+                        Later article<br />
+                        <a href="http://wighawag.com/blog/2014/12/hxcpp-extern/"> Hxcpp extern</a>
+                    
+                </div>
+            </div>
+            <div class="eight columns">
+                <div class="li-pagination-next">
+                    
+                        Older article<br />
+                        <a href="http://wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/"> Profiler Injection With MixingLoom as3commons bytecode and Flash Preloader</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="li-page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="sixteen columns">
+                <div class="li-page-footer-legal">
+                    &copy; 2015. All rights reserved. 
+                </div>
+                <div class="li-page-footer-theme">
+                    <span class=""><a href="https://github.com/eliasson/liquorice/">liquorice</a> is a theme for <a href="http://hugo.spf13.com">hugo</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+        var e = document.getElementById(id);
+        e.style.display == 'block' ? e.style.display = 'none' : e.style.display = 'block';
+    }
+    
+    </script>
+    <script type="text/javascript">
+    <!--
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', ""]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    -->
+    </script>
+    </body>
+</html>
+
