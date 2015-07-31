@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Others on wighawag</title>
-    <link>http://wighawag.com/other/</link>
+    <link>http://blog.wighawag.com/other/</link>
     <description>Recent content in Others on wighawag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 30 Jul 2015 08:14:36 +0100</lastBuildDate>
-    <atom:link href="http://wighawag.com/other/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.wighawag.com/other/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>test</title>
-      <link>http://wighawag.com/other/test/</link>
+      <link>http://blog.wighawag.com/other/test/</link>
       <pubDate>Thu, 30 Jul 2015 08:14:36 +0100</pubDate>
       
-      <guid>http://wighawag.com/other/test/</guid>
+      <guid>http://blog.wighawag.com/other/test/</guid>
       <description>&lt;p&gt;asdfasds&lt;/p&gt;
 </description>
     </item>

@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wighawag</title>
-    <link>http://wighawag.com/</link>
+    <link>http://blog.wighawag.com/</link>
     <description>Recent content on wighawag</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 30 Jul 2015 08:14:36 +0100</lastBuildDate>
-    <atom:link href="http://wighawag.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.wighawag.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>test</title>
-      <link>http://wighawag.com/other/test/</link>
+      <link>http://blog.wighawag.com/other/test/</link>
       <pubDate>Thu, 30 Jul 2015 08:14:36 +0100</pubDate>
       
-      <guid>http://wighawag.com/other/test/</guid>
+      <guid>http://blog.wighawag.com/other/test/</guid>
       <description>&lt;p&gt;asdfasds&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>test</title>
-      <link>http://wighawag.com/testing</link>
+      <link>http://blog.wighawag.com/testing</link>
       <pubDate>Mon, 27 Jul 2015 11:37:49 +0100</pubDate>
       
-      <guid>http://wighawag.com/testing</guid>
+      <guid>http://blog.wighawag.com/testing</guid>
       <description>&lt;p&gt;fsdfdsf&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>khage</title>
-      <link>http://wighawag.com/blog/2015/07/khage/</link>
+      <link>http://blog.wighawag.com/blog/2015/07/khage/</link>
       <pubDate>Thu, 23 Jul 2015 10:36:05 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2015/07/khage/</guid>
+      <guid>http://blog.wighawag.com/blog/2015/07/khage/</guid>
       <description>&lt;p&gt;It has been a while again and it is time for a new post. This time again with Haxe. I was working lately on a library mainly used for games wrapping the webgl api and other browser js api into a potentially crossplatform api. The main interesting part from it was its use of a type safe wrapper arround glsl shaders.
 It served me well and it was the first thing I wanted to port to my new destination : Kha.&lt;/p&gt;
 
@@ -47,10 +47,10 @@ It served me well and it was the first thing I wanted to port to my new destinat
     
     <item>
       <title>Hxcpp extern</title>
-      <link>http://wighawag.com/blog/2014/12/hxcpp-extern/</link>
+      <link>http://blog.wighawag.com/blog/2014/12/hxcpp-extern/</link>
       <pubDate>Mon, 01 Dec 2014 10:36:05 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2014/12/hxcpp-extern/</guid>
+      <guid>http://blog.wighawag.com/blog/2014/12/hxcpp-extern/</guid>
       <description>
 
 &lt;h1 id=&#34;introduction:95526b837c261f1f491370c2a19f8b5a&#34;&gt;Introduction&lt;/h1&gt;
@@ -341,10 +341,10 @@ instance.update(rect.ref.area ());
     
     <item>
       <title>NME Stage3D support</title>
-      <link>http://wighawag.com/blog/2012/12/nme-stage3d-support/</link>
+      <link>http://blog.wighawag.com/blog/2012/12/nme-stage3d-support/</link>
       <pubDate>Mon, 31 Dec 2012 16:26:02 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2012/12/nme-stage3d-support/</guid>
+      <guid>http://blog.wighawag.com/blog/2012/12/nme-stage3d-support/</guid>
       <description>&lt;p&gt;Hi everybody, long time I did not write a post,&lt;/p&gt;
 
 &lt;p&gt;During that time I learnt a wonderful language, &lt;a href=&#34;haxe.org&#34;&gt;Haxe&lt;/a&gt;. I have still lot to learn thought. I don&amp;rsquo;t want to go in the details of why this language (or more accurately its ecosystem) is awesome but as an Actionscript developer for the last 3 years, there is no question to switch back. Haxe offer everything that actionscript has to offer (compiling to swf including air) + many extra feature&lt;/p&gt;
@@ -439,10 +439,10 @@ And the patch provided &lt;a href=&#34;https://raw.github.com/wighawag/NMEStage3
     
     <item>
       <title>Profiler Injection With MixingLoom as3commons bytecode and Flash Preloader</title>
-      <link>http://wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</link>
+      <link>http://blog.wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</link>
       <pubDate>Sun, 05 Jun 2011 16:26:20 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</guid>
+      <guid>http://blog.wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</guid>
       <description>
 
 &lt;h3 id=&#34;introduction:7f7dc6812c7bbeec4c326bca656ef8ab&#34;&gt;Introduction&lt;/h3&gt;
@@ -583,7 +583,7 @@ By adding the path to the method in the xml, you ll see how long it takes to com
 &lt;p&gt;the third and fourth button are not meant to be profiled since a wrapper function already profile it.
 The time is shown next to the steppers. This allow  to see how the profiling injection affect the execution speed of the function injected.&lt;/p&gt;
 
-&lt;p&gt;you can download the compiled profiler &lt;a href=&#34;http://wighawag.com/blog/content/MixingloomPreloader.swf&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;you can download the compiled profiler &lt;a href=&#34;http://blog.wighawag.com/blog/content/MixingloomPreloader.swf&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;To see the profiling at work you need to edit your mm.config (see here) so that the flash preload your profiler&lt;/p&gt;
 
@@ -600,7 +600,7 @@ The time is shown next to the steppers. This allow  to see how the profiling inj
 
 &lt;p&gt;it specify which function to profile including the fibonacci methods&lt;/p&gt;
 
-&lt;p&gt;You may have to download the &lt;a href=&#34;http://wighawag.com/blog/content/mixingloomprofilerexample.swf&#34;&gt;targeted swf&lt;/a&gt; to make it work and launch it directly (not sure if it works with browsers by default for example, I could not make it work with chrome)&lt;/p&gt;
+&lt;p&gt;You may have to download the &lt;a href=&#34;http://blog.wighawag.com/blog/content/mixingloomprofilerexample.swf&#34;&gt;targeted swf&lt;/a&gt; to make it work and launch it directly (not sure if it works with browsers by default for example, I could not make it work with chrome)&lt;/p&gt;
 
 &lt;p&gt;And as you can see, the recursive fibonacci already slow in flash is even more slower with the profiling enabled. This is because the profiling function is called for each recursion and function call in flash is slow.&lt;/p&gt;
 
