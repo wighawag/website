@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.wighawag.com/</loc>
+    <loc>http://wighawag.com/</loc>
     <lastmod>2014-12-01T10:36:05+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.wighawag.com/blog/2014/12/hxcpp-extern/</loc>
+    <loc>http://wighawag.com/blog/2014/12/hxcpp-extern/</loc>
     <lastmod>2014-12-01T10:36:05+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.wighawag.com/blog/2012/12/nme-stage3d-support/</loc>
+    <loc>http://wighawag.com/blog/2012/12/nme-stage3d-support/</loc>
     <lastmod>2012-12-31T16:26:02+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</loc>
+    <loc>http://wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</loc>
     <lastmod>2011-06-05T16:26:20+01:00</lastmod>
   </url>
   
