@@ -7,23 +7,8 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 23 Jul 2015 10:36:05 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 01 Dec 2014 10:36:05 +0100</lastBuildDate>
     <atom:link href="http://blog.wighawag.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>khage</title>
-      <link>http://blog.wighawag.com/blog/2015/07/khage/</link>
-      <pubDate>Thu, 23 Jul 2015 10:36:05 +0100</pubDate>
-      
-      <guid>http://blog.wighawag.com/blog/2015/07/khage/</guid>
-      <description>&lt;p&gt;It has been a while again and it is time for a new post. This time again with Haxe. I was working lately on a library mainly used for games wrapping the webgl api and other browser js api into a potentially crossplatform api. The main interesting part from it was its use of a type safe wrapper arround glsl shaders.
-It served me well and it was the first thing I wanted to port to my new destination : Kha.&lt;/p&gt;
-
-&lt;p&gt;I have heard of Kha before the WWX2015 but did not bother try another framework. I had already a far better idea : write my own :D&lt;/p&gt;
-
-&lt;p&gt;but this was untill I attended Robert&amp;rsquo;s speech and dived in Kha.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Hxcpp extern</title>
@@ -32,8 +17,6 @@ It served me well and it was the first thing I wanted to port to my new destinat
       
       <guid>http://blog.wighawag.com/blog/2014/12/hxcpp-extern/</guid>
       <description>
-
-&lt;h1 id=&#34;introduction:95526b837c261f1f491370c2a19f8b5a&#34;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;To show the usefulness of &lt;a href=&#34;http://haxe.org&#34; title=&#34;Haxe Website&#34;&gt;Haxe&lt;/a&gt; at my company I have been working with hxcpp to compile a demo to both native using a C++ engine and Flash using a library that match the C++ engine api.&lt;/p&gt;
 
@@ -174,13 +157,13 @@ For windows it will generate by default Visual Studio solution (you will need to
 &lt;p&gt;First we need to put some haxe initialization call in the c++ side :
 This require some declaration as you can see in the code:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;extern &amp;quot;C&amp;quot; const char *hxRunLibrary();
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;extern &amp;quot;C&amp;quot; const char *hxRunLibrary();
 extern &amp;quot;C&amp;quot; void hxcpp_set_top_of_stack();
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;then in the main we call these functions with checking for error:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hxcpp_set_top_of_stack();
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;hxcpp_set_top_of_stack();
 const char *err = hxRunLibrary();
 if (err) {
   // Unhandled exceptions ...
@@ -193,7 +176,7 @@ if (err) {
 
 &lt;p&gt;The second thing to do is to declare the haxe App static function interface :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;class App_obj{
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class App_obj{
   public:
     static int init(int value);
     static int update(::cpp::Pointer&amp;lt;Rectangle&amp;gt; rect);
@@ -217,7 +200,7 @@ if (err) {
 
 &lt;p&gt;Since in the App_obj declaration use the ::cpp::Pointer type we need to declare it as well :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;namespace cpp{
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;namespace cpp{
   template&amp;lt;typename T&amp;gt;
   class Pointer{
     public:
@@ -236,7 +219,7 @@ Actually in this particular example it might have worked but in the C++ engine I
 
 &lt;p&gt;Here I did not bother to make a proper engine and i just call init() followed by update on only once but this should be pretty straightforward to extend:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;::App_obj::init(1);
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;::App_obj::init(1);
 ::App_obj::update(::cpp::Pointer&amp;lt;Rectangle&amp;gt;(rect));
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -250,7 +233,7 @@ Actually in this particular example it might have worked but in the C++ engine I
 
 &lt;p&gt;You declare your extern as usual with some extera metadata:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;@:structAccess
+&lt;pre&gt;&lt;code class=&#34;language-haxe&#34;&gt;@:structAccess
 @:include(&amp;quot;Rectangle.h&amp;quot;)
 @:native(&amp;quot;Rectangle&amp;quot;)
 extern class Rectangle{
@@ -269,7 +252,7 @@ extern class Rectangle{
 
 &lt;p&gt;I also added an Include.hx file which add some information to hxcpp so it can find the header files included:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;@:buildXml(&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-haxe&#34;&gt;@:buildXml(&amp;quot;
 &amp;lt;files id=&#39;haxe&#39;&amp;gt;
   &amp;lt;compilerflag value=&#39;-I../cpp/include&#39;/&amp;gt;
 &amp;lt;/files&amp;gt;
@@ -298,7 +281,7 @@ extern class Rectangle{
 
 &lt;p&gt;If you take a look at App.hx you can see :&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;rect.ref.set_values(4,200);
+&lt;pre&gt;&lt;code class=&#34;language-haxe&#34;&gt;rect.ref.set_values(4,200);
 instance.update(rect.ref.area());
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -308,7 +291,7 @@ instance.update(rect.ref.area());
 
 &lt;p&gt;To be clear the following will set values on a copy and thus the area passed to function will not be the expected one:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var actualRect = rect.ref;
+&lt;pre&gt;&lt;code class=&#34;language-haxe&#34;&gt;var actualRect = rect.ref;
 actualRect.set_values(4,200);
 instance.update(rect.ref.area ());
 &lt;/code&gt;&lt;/pre&gt;
@@ -402,7 +385,7 @@ Actually maybe there was a nice way to achieve the same with tilesheet API ?&lt;
 
 &lt;p&gt;I posted a test here  &lt;a href=&#34;https://github.com/wighawag/NMEStage3DTest&#34;&gt;https://github.com/wighawag/NMEStage3DTest&lt;/a&gt;&lt;/p&gt;
 
-&lt;iframe width=&#34;500&#34; height=&#34;500&#34; src=&#34;http://www.wighawag.com/blog/content/NMEStage3DTest.html&#34;&gt;&lt;/iframe&gt;
+&lt;iframe width=&#34;500&#34; height=&#34;500&#34; src=&#34;http://blog.wighawag.com/blog/content/NMEStage3DTest.html&#34;&gt;&lt;/iframe&gt;
 
 &lt;p&gt;It should work in Flash without my new version of NME
 And the patch provided &lt;a href=&#34;https://raw.github.com/wighawag/NMEStage3DTest/master/stage3d.patch&#34;&gt;here&lt;/a&gt; should make it work in cpp (tested only on Linux 64 bit by the way)&lt;/p&gt;
@@ -424,8 +407,6 @@ And the patch provided &lt;a href=&#34;https://raw.github.com/wighawag/NMEStage3
       
       <guid>http://blog.wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</guid>
       <description>
-
-&lt;h3 id=&#34;introduction:7f7dc6812c7bbeec4c326bca656ef8ab&#34;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;Recently I discovered &lt;strong&gt;MixingLoom&lt;/strong&gt; through &lt;a href=&#34;http://www.jamesward.com/2011/04/26/introducing-mixing-loom-runtime-actionscript-bytecode-modification/&#34;&gt;James Ward&amp;rsquo;s article&lt;/a&gt;, it is a library to ease the injection of code in swf. One usage of it is &lt;a href=&#34;http://en.wikipedia.org/wiki/Aspect-oriented_programming&#34;&gt;Aspect Oriented Programming&lt;/a&gt; to separate logging, analytics&amp;hellip; from the actual application code by injecting the extra code (logging, analytics&amp;hellip;)  into the swf after compilation (thanks to &lt;a href=&#34;http://www.as3commons.org/as3-commons-bytecode/index.html&#34;&gt;as3commons-bytecode library&lt;/a&gt; ). This way the extra code does not appear anywhere in the application source code which stay focused on what it should do.&lt;/p&gt;
 
@@ -551,7 +532,7 @@ By the way, since the code shown in this page is dynamically taken from the gith
 
 &lt;p&gt;To show it works I created an example project at &lt;a href=&#34;https://github.com/wighawag/mixingloom-profiler-example&#34;&gt;github&lt;/a&gt;&lt;/p&gt;
 
-&lt;iframe width=&#34;100%&#34; height=&#34;100%&#34; src=&#34;http://www.wighawag.com/blog/content/mixingloomprofilerexample.swf&#34;&gt;&lt;/iframe&gt;
+&lt;iframe width=&#34;100%&#34; height=&#34;100%&#34; src=&#34;http://blog.wighawag.com/blog/content/mixingloomprofilerexample.swf&#34;&gt;&lt;/iframe&gt;
 
 &lt;p&gt;it has 4 button and 4 numeric stepper (from  &lt;a href=&#34;https://github.com/wighawag/minimalcomps&#34;&gt;minimalcomps&lt;/a&gt;, actually a fork since there is issues with instance variables set at the class level , _maximum and _minimum in this case. I did not have time to investigate but it made me think that using mm.config preloader is not a very good idea even if it theorically allow you to profile any swf on the net.&lt;/p&gt;
 
