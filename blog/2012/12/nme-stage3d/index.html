@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NME Stage3D &middot; wighawag</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.14" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="NME Stage3D &middot; wighawag">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="NME Stage3D &middot; wighawag">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+
+    <link rel="stylesheet" href="http://wighawag.com//css/all.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="wighawag" href="http://wighawag.com//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://wighawag.com/blog/">wighawag</a></h1>
+            <h2 class="brand-tagline"> Random thoughts and works about code </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/wighawag"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/wighawag "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="http://wighawag.com//index.xml"><i class="fa fa-rss"></i> rss</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">31 Dec 2012, 16:26</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://wighawag.com/blog/2012/12/nme-stage3d/" class="post-title">NME Stage3D</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-share">
+                        <div class="post-share-links">
+                            <h4 style="">Share</h4>
+                            <a href="#" data-type="facebook" data-url="http://wighawag.com/blog/2012/12/nme-stage3d/" data-title="NME Stage3D" data-description="" data-media="" class="prettySocial fa fa-facebook"></a>
+                            <a href="#" data-type="googleplus" data-url="http://wighawag.com/blog/2012/12/nme-stage3d/" data-description="" class="prettySocial fa fa-google-plus"></a>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="post-description">
+                        <p>Hi everybody, long time I did not write a post,</p>
+
+<p>During that time I learnt a wonderful language, <a href="haxe.org">Haxe</a>. I have still lot to learn thought. I don&rsquo;t want to go in the details of why this language (or more accurately its ecosystem) is awesome but as an Actionscript developer for the last 3 years, there is no question to switch back. Haxe offer everything that actionscript has to offer (compiling to swf including air) + many extra feature</p>
+
+<p>The ones I like the most are:</p>
+
+<ul>
+<li>Generics,</li>
+<li>Typed function</li>
+<li>and Macros (which I still have to practice more)</li>
+</ul>
+
+<p>I also like that the compiler is very fast (compared to mxmlc) and it handle Type inference, no need to repeat yourself like in actionscript</p>
+
+<p>But the main advantage is that Haxe can compile to other languages. The current stable ones being swf, javascript, php, c++ and neko (a virtual machine that I did not use much except for writing tools and for using Macros (as they run on this virtual machine).</p>
+
+<p>This not only means that you can get your code working on android, ios, blackberry, linux, mac os x, windows, webos but also that you can share code between client and server</p>
+
+<p>If I find some time I would like to make a Python target myself but as of now this is unlikely to happen</p>
+
+<p>The other great thing about Haxe is its community, they are doing a great job with Haxe itself (haxe 3 in the making) and with great libraries (<a href="http://www.nme.io/">NME</a>, <a href="https://github.com/aduros/flambe">Flambe</a>, <a href="https://github.com/jdonaldson/promhx">Promhx</a>,.,) and quick to reply to questions</p>
+
+<p>Let&rsquo;s get back on the topic. I am writing this post to share the last work I did regarding Haxe and maybe this will contribute to the community..</p>
+
+<p>I am currently working on a game engine which I plan to use for mobile game as well as web based game (thanks to Haxe of course :)</p>
+
+<p>I have a renderer agnostic api and until the last few days I was using:</p>
+
+<ul>
+<li>Flambe 1.2 (only its rendering part) to render stuff on Flash (using stage3d and bitmap renderer as a fallback)</li>
+<li>NME Tilesheet API for cpp target (testing only linux and android)</li>
+</ul>
+
+<p>Then I started to implement a tile map and as soon as I started to add many tiles, my old android phone (an HTC magic upgraded to androdi 2.3) could not display anything,</p>
+
+<p>The reason was not Tilesheet performance (using GPU) per se but the fact that in order to update the position of the tiles while scrolling, the CPU (not the GPU) could not handle the many tile. Of course there were lots of optimization possible as I was using a quite high level API but this problem made me think that it would be nice if I could use the GPU myself directly so that I can save my vertex buffer at the beginning and at each frame I would just need to update the view matrix.
+Actually maybe there was a nice way to achieve the same with tilesheet API ?</p>
+
+<p>Anyway, just in time came NME 3.5.1 with support for OpenGLView</p>
+
+<p>I jumped on it and learn OpenGL on the way to realize that it should not be too difficult to implement the Stage3D API for NME</p>
+
+<p>So here it is <a href="https://github.com/wighawag/NME/tree/stage3d">https://github.com/wighawag/NME/tree/stage3d</a></p>
+
+<p>It is still not fully working as flash Stage3D is. here is a partial list of the issues:</p>
+
+<ul>
+<li>there is no support for multiple textures yet</li>
+<li>(Index/Vertex)Buffer can only be uploaded from ByteArray as of now (it might be straigthforward to make it work with Vector though)</li>
+<li>for Context3D here are the following issues:</li>
+<li>Context3D.setCulling is not tested</li>
+<li>Context3D.setDepthTest not woking  (Currentlty the constants for the Depth test are not set in the opengl API provided in NME)</li>
+<li>Context3D.configureBackBuffer does not take in consideration antiAlias and enableDepthAndStencil arguments</li>
+<li>Context3D.createCubeTexture not implemented</li>
+<li>Context3D.createTexture does not consider Format, optimizeForRenderToTexture and streamingLevels arguments</li>
+<li>Context3D.drawToBitmapData not implemented</li>
+<li>Context3D.setProgramConstantsFromByteArray not implemented</li>
+<li>Context3D.setProgramConstantsFromVector not implemented</li>
+<li>Context3D.setRenderToBackBuffer not implemented</li>
+<li>Context3D.setRenderToTexture not implemented</li>
+<li>Context3D.setScissorRectangle not implemented</li>
+<li>Context3D.setStencilActions not implemented</li>
+<li>Context3D.setStencilReferenceValue not implemented</li>
+<li>probably many thing I forgot</li>
+<li>since the openGL api used in NME does not allow direct call to render, you need to set a render function. This is achieved by passing a function to Contex3D.setRenderMethod (which does not exist in flash). To be as close as possible to flash Stage3D I should probably allow to render in Event.ENTER_FRAME or any timer. But this would require to cache the calls made to context3D and replay them when the openGL API call the render function.</li>
+</ul>
+
+<p>Anyway the main drawback currently is that since Stage3D and opengl use different shader language you still need to code your shader in two languages. Also regarding GLSL, since I wanted to use Stage3D api which does not support arbitrary name for attributes and uniforms, you have to use the same convention as AGAL (vc0, vc1 for vertex uniforms, va0, va1.. for vertex attribute, &hellip;etc&hellip;) as attribute and uniform name in GLSL</p>
+
+<p>The best solution here would be to extend <a href="http://haxe.org/manual/hxsl">HXSL</a> and use it to have only one language for both Stage3D and GLSL but I did not look into that. I know there were some work on a GLSL target for HXSL but I don&rsquo;t know what is the state of this as of now, Any info ?</p>
+
+<p>I will porbably look into it when I ll need more complex shader stuff.</p>
+
+<p>I plan to continue working on this Stage3D port and I would be very glad if it could be included in NME trunk so my work do not get lost as a patch file.  I ll probably do a pull request even if it s still not perfect)</p>
+
+<p>I posted a test here  <a href="https://github.com/wighawag/NMEStage3DTest">https://github.com/wighawag/NMEStage3DTest</a></p>
+
+<iframe width="500" height="500" src="/blog/content/NMEStage3DTest.html"></iframe>
+
+<p>It should work in Flash without my new version of NME
+And the patch provided <a href="https://raw.github.com/wighawag/NMEStage3DTest/master/stage3d.patch">here</a> should make it work in cpp (tested only on Linux 64 bit by the way)</p>
+
+<p>You ban also clone my NME fork if you prefer and checkout the &ldquo;stage3d&rdquo; branch</p>
+
+<p>Let me know what you think and if some of you already started some similar work, let&rsquo;s cooperate.</p>
+
+<p>All the best for the coming new year!</p>
+
+<p>We survived the end of the world so let&rsquo;s celebrate apropriately :)</p>
+
+                    </div>
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wighawag';
+    var disqus_identifier = 'http:\/\/wighawag.com\/blog\/2012\/12\/nme-stage3d\/';
+    var disqus_title = 'NME Stage3D';
+    var disqus_url = 'http:\/\/wighawag.com\/blog\/2012\/12\/nme-stage3d\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src="http://wighawag.com//js/all.min.js"></script>
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-23785020-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

@@ -11,11 +11,11 @@
     <atom:link href="http://wighawag.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Hxcpp extern</title>
-      <link>http://wighawag.com/blog/2014/12/Hxcpp-extern/</link>
+      <title>Hxcpp externs</title>
+      <link>http://wighawag.com/blog/2014/12/hxcpp-externs/</link>
       <pubDate>Mon, 01 Dec 2014 10:36:05 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2014/12/Hxcpp-extern/</guid>
+      <guid>http://wighawag.com/blog/2014/12/hxcpp-externs/</guid>
       <description>
 
 &lt;p&gt;To show the usefulness of &lt;a href=&#34;http://haxe.org&#34; title=&#34;Haxe Website&#34;&gt;Haxe&lt;/a&gt; at my company I have been working with hxcpp to compile a demo to both native using a C++ engine and Flash using a library that match the C++ engine api.&lt;/p&gt;
@@ -37,7 +37,7 @@ In any case most of the thing I will talk about it here apply as well to other p
 
 &lt;p&gt;Since I cannot show you the C++ engine code I set up some c++ code that act in a similar fashion. I did not bother creating an abstract class but as you can guess it will work as well with such setup.&lt;/p&gt;
 
-&lt;h1 id=&#34;requirements:95526b837c261f1f491370c2a19f8b5a&#34;&gt;Requirements&lt;/h1&gt;
+&lt;h1 id=&#34;requirements:39c384e8b9ffcc50ae6b6e1af181771e&#34;&gt;Requirements&lt;/h1&gt;
 
 &lt;p&gt;Before starting you will need to setup your development environment. This require few steps as we are using bleeding edge stuff:&lt;/p&gt;
 
@@ -104,7 +104,7 @@ for unix :&lt;/p&gt;
 
 &lt;p&gt;And this should be all for your environment setup&lt;/p&gt;
 
-&lt;h1 id=&#34;the-demo:95526b837c261f1f491370c2a19f8b5a&#34;&gt;The Demo&lt;/h1&gt;
+&lt;h1 id=&#34;the-demo:39c384e8b9ffcc50ae6b6e1af181771e&#34;&gt;The Demo&lt;/h1&gt;
 
 &lt;p&gt;Now you can grab the source code of the example at &lt;a href=&#34;https://github.com/wighawag/hxcpp-test&#34;&gt;https://github.com/wighawag/hxcpp-test&lt;/a&gt;
 As said earlier, it does not use my company&amp;rsquo;s c++ engine but instead it use a simple setup where the main is not controlled by Haxe.&lt;/p&gt;
@@ -145,7 +145,7 @@ cmake ..
 &lt;p&gt;This will generate your project file in the build folder
 For windows it will generate by default Visual Studio solution (you will need to set HaxeTest as your startup project and then you can start debugging&lt;/p&gt;
 
-&lt;h1 id=&#34;c-to-haxe:95526b837c261f1f491370c2a19f8b5a&#34;&gt;C++ to Haxe&lt;/h1&gt;
+&lt;h1 id=&#34;c-to-haxe:39c384e8b9ffcc50ae6b6e1af181771e&#34;&gt;C++ to Haxe&lt;/h1&gt;
 
 &lt;p&gt;Since we do not control the main entry point we need the C++ code to call haxe code. Since we have only one haxe app running we can use static function for that direction (C++ -&amp;gt; Haxe). This map easily with the virtual function implementation of a main Abstract class.&lt;/p&gt;
 
@@ -225,7 +225,7 @@ Actually in this particular example it might have worked but in the C++ engine I
 
 &lt;p&gt;This is pretty much it for having your haxe code run from the c++ engine&lt;/p&gt;
 
-&lt;h1 id=&#34;haxe-to-c:95526b837c261f1f491370c2a19f8b5a&#34;&gt;Haxe to C++&lt;/h1&gt;
+&lt;h1 id=&#34;haxe-to-c:39c384e8b9ffcc50ae6b6e1af181771e&#34;&gt;Haxe to C++&lt;/h1&gt;
 
 &lt;p&gt;In order to go the other way (Haxe -&amp;gt; C++) we can use the latest &amp;ldquo;extern&amp;rdquo; feature of hxcpp. This is far better than the old &lt;a href=&#34;http://old.haxe.org/doc/cpp/ffi&#34;&gt;cffi&lt;/a&gt; which allowed only static function to be called. If you prefer though, you can still use it.&lt;/p&gt;
 
@@ -296,18 +296,18 @@ actualRect.set_values(4,200);
 instance.update(rect.ref.area ());
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;conclusion:95526b837c261f1f491370c2a19f8b5a&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;h1 id=&#34;conclusion:39c384e8b9ffcc50ae6b6e1af181771e&#34;&gt;Conclusion&lt;/h1&gt;
 
 &lt;p&gt;There is probably a lot more to be said on the hxcpp extern integration but that would be all for now. If you knew already about cffi, I suppose this new extern facility should look like a big improvement. The integration process while not as seemless as flash/java target, it is not very hard neither. Maybe we could generate the extern from the header files directly. In any case, I hope you got some learning from reading and that you will deep into haxe/hxcpp to explore more. Thank you for reading. If you have any questions, do not hesitate to put a comment.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>NME Stage3D support</title>
-      <link>http://wighawag.com/blog/2012/12/nme-stage3d-support/</link>
+      <title>NME Stage3D</title>
+      <link>http://wighawag.com/blog/2012/12/nme-stage3d/</link>
       <pubDate>Mon, 31 Dec 2012 16:26:02 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2012/12/nme-stage3d-support/</guid>
+      <guid>http://wighawag.com/blog/2012/12/nme-stage3d/</guid>
       <description>&lt;p&gt;Hi everybody, long time I did not write a post,&lt;/p&gt;
 
 &lt;p&gt;During that time I learnt a wonderful language, &lt;a href=&#34;haxe.org&#34;&gt;Haxe&lt;/a&gt;. I have still lot to learn thought. I don&amp;rsquo;t want to go in the details of why this language (or more accurately its ecosystem) is awesome but as an Actionscript developer for the last 3 years, there is no question to switch back. Haxe offer everything that actionscript has to offer (compiling to swf including air) + many extra feature&lt;/p&gt;
@@ -401,18 +401,18 @@ And the patch provided &lt;a href=&#34;https://raw.github.com/wighawag/NMEStage3
     </item>
     
     <item>
-      <title>Profiler Injection With MixingLoom as3commons bytecode and Flash Preloader</title>
-      <link>http://wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</link>
+      <title>Actionscript Profiler Runtime Code Injection</title>
+      <link>http://wighawag.com/blog/2011/06/actionscript-profiler-runtime-code-injection/</link>
       <pubDate>Sun, 05 Jun 2011 16:26:20 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2011/06/profiler-injection-with-mixingloom-as3commons-bytecode-and-flash-preloader/</guid>
+      <guid>http://wighawag.com/blog/2011/06/actionscript-profiler-runtime-code-injection/</guid>
       <description>
 
 &lt;p&gt;Recently I discovered &lt;strong&gt;MixingLoom&lt;/strong&gt; through &lt;a href=&#34;http://www.jamesward.com/2011/04/26/introducing-mixing-loom-runtime-actionscript-bytecode-modification/&#34;&gt;James Ward&amp;rsquo;s article&lt;/a&gt;, it is a library to ease the injection of code in swf. One usage of it is &lt;a href=&#34;http://en.wikipedia.org/wiki/Aspect-oriented_programming&#34;&gt;Aspect Oriented Programming&lt;/a&gt; to separate logging, analytics&amp;hellip; from the actual application code by injecting the extra code (logging, analytics&amp;hellip;)  into the swf after compilation (thanks to &lt;a href=&#34;http://www.as3commons.org/as3-commons-bytecode/index.html&#34;&gt;as3commons-bytecode library&lt;/a&gt; ). This way the extra code does not appear anywhere in the application source code which stay focused on what it should do.&lt;/p&gt;
 
 &lt;p&gt;Here I ll show you how to inject profiler code to measure the speed of execution of particular functions. An xml file read at run time would be used to specify which function to profile (and to inject). It can be used for other purpose as well but since currently it does not handle arguments except for 1 string argument, it is quite limited.&lt;/p&gt;
 
-&lt;h3 id=&#34;preloader:7f7dc6812c7bbeec4c326bca656ef8ab&#34;&gt;Preloader&lt;/h3&gt;
+&lt;h3 id=&#34;preloader:77dd6cd12d8f90971fce8ef399b0ca7c&#34;&gt;Preloader&lt;/h3&gt;
 
 &lt;p&gt;Since I did not want to use flex at all, I could not use the example in James&amp;rsquo; article which use the MixingLoom flex preloaders.&lt;/p&gt;
 
@@ -444,7 +444,7 @@ And the patch provided &lt;a href=&#34;https://raw.github.com/wighawag/NMEStage3
 
 &lt;p&gt;Note : This abstract preloader can be extended for any purpose including non-mixingloom/injection one&lt;/p&gt;
 
-&lt;h3 id=&#34;setting-up-mixingloom:7f7dc6812c7bbeec4c326bca656ef8ab&#34;&gt;Setting up MixingLoom&lt;/h3&gt;
+&lt;h3 id=&#34;setting-up-mixingloom:77dd6cd12d8f90971fce8ef399b0ca7c&#34;&gt;Setting up MixingLoom&lt;/h3&gt;
 
 &lt;p&gt;Apart from having to re-hook the preloading part I also had to deal with the patchers and byte injection myself. Indeed James in his article use MixingLoom preloader which take care of applying the patch specified on the constructor through the flex specific code.&lt;/p&gt;
 
@@ -462,7 +462,7 @@ And the patch provided &lt;a href=&#34;https://raw.github.com/wighawag/NMEStage3
 
 &lt;p&gt;To extend the abstract class, the only neccessary bit is then to call &lt;strong&gt;applyPatchers&lt;/strong&gt; with a list of patchers.&lt;/p&gt;
 
-&lt;h3 id=&#34;injection:7f7dc6812c7bbeec4c326bca656ef8ab&#34;&gt;Injection&lt;/h3&gt;
+&lt;h3 id=&#34;injection:77dd6cd12d8f90971fce8ef399b0ca7c&#34;&gt;Injection&lt;/h3&gt;
 
 &lt;p&gt;Now that we have all the framework in place we can see an actual implementation of these abstract classes:&lt;/p&gt;
 
