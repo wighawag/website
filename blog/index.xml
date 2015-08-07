@@ -12,10 +12,10 @@
     
     <item>
       <title>Hxcpp extern</title>
-      <link>http://wighawag.com/blog/2014/12/hxcpp-extern/</link>
+      <link>http://wighawag.com/blog/2014/12/Hxcpp-extern/</link>
       <pubDate>Mon, 01 Dec 2014 10:36:05 +0100</pubDate>
       
-      <guid>http://wighawag.com/blog/2014/12/hxcpp-extern/</guid>
+      <guid>http://wighawag.com/blog/2014/12/Hxcpp-extern/</guid>
       <description>
 
 &lt;p&gt;To show the usefulness of &lt;a href=&#34;http://haxe.org&#34; title=&#34;Haxe Website&#34;&gt;Haxe&lt;/a&gt; at my company I have been working with hxcpp to compile a demo to both native using a C++ engine and Flash using a library that match the C++ engine api.&lt;/p&gt;
