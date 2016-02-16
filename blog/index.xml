@@ -7,8 +7,54 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 01 Dec 2014 10:36:05 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 16 Feb 2016 10:36:05 +0100</lastBuildDate>
     <atom:link href="http://wighawag.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>khage</title>
+      <link>http://wighawag.com/blog/2016/02/khage/</link>
+      <pubDate>Tue, 16 Feb 2016 10:36:05 +0100</pubDate>
+      
+      <guid>http://wighawag.com/blog/2016/02/khage/</guid>
+      <description>&lt;p&gt;It has been a long time. Back for another article on Haxe. This time it relate to low level gpu programming with Khage (&lt;a href=&#34;https://github.com/wighawag/khage&#34;&gt;https://github.com/wighawag/khage&lt;/a&gt;).
+The goal of khage is to simplify low level gpu programming so much that it become the primary way in which to render a game via code.&lt;/p&gt;
+
+&lt;p&gt;It might seem unecessary for those who do not want to deal with low level stuff and prefer to code with a scene graph or other higher level framework.&lt;/p&gt;
+
+&lt;p&gt;In my experience (flash, cocos2d-x) these were never good idea. Most of the time, these scene graph trade too much performance and do not allow easy low level access when needed.
+On top of that, they often end up as the substrate for the game&amp;rsquo;s model and couple the logic and the renderring. This makes lots of task harder to do in the end.&lt;/p&gt;
+
+&lt;p&gt;The approach I prefer is to code the model of the game in anyway you want without any reference to rendering. Once the model is in place, you can then render it anyway you like. I usually execute opengl command there and I can organise the renderrign in layer (matching the gpu way). This is where khage comes in as it simplify gpu coding so much that it allow you to use it directly to render the model without losing type safety. Instead of dealing with shaders strings and attribute and uniform locations, you deal with normal type safe code.&lt;/p&gt;
+
+&lt;p&gt;Khage originated from a library I wrote a year ago for webgl games. It wrapped the webgl api and other browser js api into a potentially crossplatform api. The main interesting part from it was its use of a type safe wrapper arround glsl shaders.
+It allowed me to write type safe concise code while dealing with low level gpu code.
+It served me well and it was the first thing I wanted to port to my new destination : Kha (&lt;a href=&#34;https://github.com/KTXSoftware/Kha&#34;&gt;https://github.com/KTXSoftware/Kha&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;I have heard of Kha before the WWX2015 but did not bother try another framework (which actually is not). I had already a far better idea : write my own :D&lt;/p&gt;
+
+&lt;p&gt;This was until I attended Robert&amp;rsquo;s speech (&lt;a href=&#34;http://www.silexlabs.org/kha/&#34;&gt;http://www.silexlabs.org/kha/&lt;/a&gt;) and dived in Kha. This has now been almost 8 months with it and this is the best thing to happen to Haxe. It solves exactly what I was hoping to do one day with my js only library and a lot more. Its api works exactly the same across a variety of targets including flash, webgl, canvas, c++ (mobile, desktop&amp;hellip;) and its architecture allow to add new platform quite easily. On top of that it contains a shader cross compiler (krafix : &lt;a href=&#34;https://github.com/KTXSoftware/krafix&#34;&gt;https://github.com/KTXSoftware/krafix&lt;/a&gt;) that can output to the different platform specific shading language from glsl.&lt;/p&gt;
+
+&lt;p&gt;My implementation of the type safe glsl wrapper for Kha is Khage (&lt;a href=&#34;https://github.com/wighawag/khage&#34;&gt;https://github.com/wighawag/khage&lt;/a&gt;). It is actually not finished but is already useful. What it does is it gather the name and type of  both attributes and uniforms at compile time. Then for each shader pair used it generates a class that contain a set of setter for the uniforms. This give you a type safe &amp;ldquo;program&amp;rdquo;. In Kha&amp;rsquo;s terminology this is actually a &amp;ldquo;pipeline&amp;rdquo; to match how gpu works internally and how the next generation of gpu api works (vulkan, metal&amp;hellip;)
+The pipeline wrapper also get a generated draw function that accept a specific buffer type (based on the attributes in the vertex shader).&lt;/p&gt;
+
+&lt;p&gt;These buffer types are generated via a @:genericBuild macro. To use a buffer that have position, texture coordinate and alpha you can create it this way :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;buffer = new Buffer&amp;lt;{position:Vec3,tex:Vec2,alpha:Float}&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The names here are important and such Buffer will only work with shader that have the exact same attributes (name and types). This might seem restrictive but allow type safe coding.&lt;/p&gt;
+
+&lt;p&gt;Khage also add some macro to make it simpler to use kha api. For example, kha render pipeline require you to wrap your rendering code with &lt;code&gt;g.begin()&lt;/code&gt; and &lt;code&gt;g.end()&lt;/code&gt;. Khage add a macro that make the wrapping automatic.&lt;/p&gt;
+
+&lt;p&gt;Lubos has created a set of basic example for kha 3d usage (&lt;a href=&#34;https://github.com/luboslenco/kha3d_examples&#34;&gt;https://github.com/luboslenco/kha3d_examples&lt;/a&gt;) and I ported them over to use khage to show how it can simplify coding (&lt;a href=&#34;https://github.com/wighawag/kha3d_examples&#34;&gt;https://github.com/wighawag/kha3d_examples&lt;/a&gt;). Compare &lt;a href=&#34;https://github.com/wighawag/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx&#34;&gt;https://github.com/wighawag/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx&lt;/a&gt; with &lt;a href=&#34;https://github.com/luboslenco/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx&#34;&gt;https://github.com/luboslenco/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Currently the glsl parser is very basic and does not support comment or any other more advanced uniform (like struct and arrays). Krafix (the shader cross compiler) is able to output the uniform and attribute types and names. I plan to use it so it will works properly. I am waiting for some change in krafix to make this easier.&lt;/p&gt;
+
+&lt;p&gt;If you find this interesting, do not hesitate to drop a line and try khage (&lt;a href=&#34;https://github.com/wighawag/khage&#34;&gt;https://github.com/wighawag/khage&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hxcpp externs</title>

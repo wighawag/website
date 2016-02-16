@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>khage &middot; wighawag</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.15" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="khage &middot; wighawag">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="khage &middot; wighawag">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+
+    <link rel="stylesheet" href="http://wighawag.com//css/all.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="wighawag" href="http://wighawag.com//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://wighawag.com/blog/">wighawag</a></h1>
+            <h2 class="brand-tagline"> Random thoughts and works about code </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/wighawag"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/wighawag "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="http://wighawag.com//index.xml"><i class="fa fa-rss"></i> rss</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">16 Feb 2016, 10:36</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://wighawag.com/blog/2016/02/khage/" class="post-title">khage</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-share">
+                        <div class="post-share-links">
+                            <h4 style="">Share</h4>
+                            <a href="#" data-type="facebook" data-url="http://wighawag.com/blog/2016/02/khage/" data-title="khage" data-description="" data-media="" class="prettySocial fa fa-facebook"></a>
+                            <a href="#" data-type="googleplus" data-url="http://wighawag.com/blog/2016/02/khage/" data-description="" class="prettySocial fa fa-google-plus"></a>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="post-description">
+                        <p>It has been a long time. Back for another article on Haxe. This time it relate to low level gpu programming with Khage (<a href="https://github.com/wighawag/khage">https://github.com/wighawag/khage</a>).
+The goal of khage is to simplify low level gpu programming so much that it become the primary way in which to render a game via code.</p>
+
+<p>It might seem unecessary for those who do not want to deal with low level stuff and prefer to code with a scene graph or other higher level framework.</p>
+
+<p>In my experience (flash, cocos2d-x) these were never good idea. Most of the time, these scene graph trade too much performance and do not allow easy low level access when needed.
+On top of that, they often end up as the substrate for the game&rsquo;s model and couple the logic and the renderring. This makes lots of task harder to do in the end.</p>
+
+<p>The approach I prefer is to code the model of the game in anyway you want without any reference to rendering. Once the model is in place, you can then render it anyway you like. I usually execute opengl command there and I can organise the renderrign in layer (matching the gpu way). This is where khage comes in as it simplify gpu coding so much that it allow you to use it directly to render the model without losing type safety. Instead of dealing with shaders strings and attribute and uniform locations, you deal with normal type safe code.</p>
+
+<p>Khage originated from a library I wrote a year ago for webgl games. It wrapped the webgl api and other browser js api into a potentially crossplatform api. The main interesting part from it was its use of a type safe wrapper arround glsl shaders.
+It allowed me to write type safe concise code while dealing with low level gpu code.
+It served me well and it was the first thing I wanted to port to my new destination : Kha (<a href="https://github.com/KTXSoftware/Kha">https://github.com/KTXSoftware/Kha</a>).</p>
+
+<p>I have heard of Kha before the WWX2015 but did not bother try another framework (which actually is not). I had already a far better idea : write my own :D</p>
+
+<p>This was until I attended Robert&rsquo;s speech (<a href="http://www.silexlabs.org/kha/">http://www.silexlabs.org/kha/</a>) and dived in Kha. This has now been almost 8 months with it and this is the best thing to happen to Haxe. It solves exactly what I was hoping to do one day with my js only library and a lot more. Its api works exactly the same across a variety of targets including flash, webgl, canvas, c++ (mobile, desktop&hellip;) and its architecture allow to add new platform quite easily. On top of that it contains a shader cross compiler (krafix : <a href="https://github.com/KTXSoftware/krafix">https://github.com/KTXSoftware/krafix</a>) that can output to the different platform specific shading language from glsl.</p>
+
+<p>My implementation of the type safe glsl wrapper for Kha is Khage (<a href="https://github.com/wighawag/khage">https://github.com/wighawag/khage</a>). It is actually not finished but is already useful. What it does is it gather the name and type of  both attributes and uniforms at compile time. Then for each shader pair used it generates a class that contain a set of setter for the uniforms. This give you a type safe &ldquo;program&rdquo;. In Kha&rsquo;s terminology this is actually a &ldquo;pipeline&rdquo; to match how gpu works internally and how the next generation of gpu api works (vulkan, metal&hellip;)
+The pipeline wrapper also get a generated draw function that accept a specific buffer type (based on the attributes in the vertex shader).</p>
+
+<p>These buffer types are generated via a @:genericBuild macro. To use a buffer that have position, texture coordinate and alpha you can create it this way :</p>
+
+<pre><code>buffer = new Buffer&lt;{position:Vec3,tex:Vec2,alpha:Float}&gt;();
+</code></pre>
+
+<p>The names here are important and such Buffer will only work with shader that have the exact same attributes (name and types). This might seem restrictive but allow type safe coding.</p>
+
+<p>Khage also add some macro to make it simpler to use kha api. For example, kha render pipeline require you to wrap your rendering code with <code>g.begin()</code> and <code>g.end()</code>. Khage add a macro that make the wrapping automatic.</p>
+
+<p>Lubos has created a set of basic example for kha 3d usage (<a href="https://github.com/luboslenco/kha3d_examples">https://github.com/luboslenco/kha3d_examples</a>) and I ported them over to use khage to show how it can simplify coding (<a href="https://github.com/wighawag/kha3d_examples">https://github.com/wighawag/kha3d_examples</a>). Compare <a href="https://github.com/wighawag/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx">https://github.com/wighawag/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx</a> with <a href="https://github.com/luboslenco/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx">https://github.com/luboslenco/kha3d_examples/blob/master/tutorial04/Sources/Empty.hx</a></p>
+
+<p>Currently the glsl parser is very basic and does not support comment or any other more advanced uniform (like struct and arrays). Krafix (the shader cross compiler) is able to output the uniform and attribute types and names. I plan to use it so it will works properly. I am waiting for some change in krafix to make this easier.</p>
+
+<p>If you find this interesting, do not hesitate to drop a line and try khage (<a href="https://github.com/wighawag/khage">https://github.com/wighawag/khage</a>)</p>
+
+<p>Thanks for reading</p>
+
+                    </div>
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wighawag';
+    var disqus_identifier = 'http:\/\/wighawag.com\/blog\/2016\/02\/khage\/';
+    var disqus_title = 'khage';
+    var disqus_url = 'http:\/\/wighawag.com\/blog\/2016\/02\/khage\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src="http://wighawag.com//js/all.min.js"></script>
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-23785020-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
